@@ -1,27 +1,13 @@
-def say_hello(name):
-    return f"Hello {name}"
+def my_decorator(func):
+    def wrapper():
+        print("Inside the wrapper")
+        func()
+        print("After function")
+    return wrapper
 
 
-def be_awesome(name):
-    return f"Yo {name}"
+def say_whee():
+    print("Whee!")
 
 
-def parent():
-    print(f"Parent function")
-
-    def child_one():
-        print(f"Child function1")
-
-    def child_twice():
-        print(f"Child function2")
-
-    child_one()
-    child_twice()
-
-
-def greet_bob(f):
-    return f("Bob")
-
-
-if __name__ == "__main__":
-    parent()
+say_whee = my_decorator(say_whee)
